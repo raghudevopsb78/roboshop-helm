@@ -6,7 +6,7 @@ LOAD_BALANCER=$(kubectl get svc ngx-ingres-ingress-nginx-controller | grep ngx-i
 
 while true ; do
   echo "Waiting for Load Balancer to come to Active"
-  nslookup $LOAD_LOAD_BALANCER &>/dev/null
+  nslookup $LOAD_BALANCER &>/dev/null
   if [ $? -eq 0 ]; then break ; fi
   sleep 5
 done
