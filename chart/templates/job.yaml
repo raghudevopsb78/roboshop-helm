@@ -15,7 +15,7 @@ spec:
             sizeLimit: 5Mi
       initContainers:
         - name: vault
-          image: 633788536644.dkr.ecr.us-east-1.amazonaws.com/vault-init-container:v5
+          image: 633788536644.dkr.ecr.us-east-1.amazonaws.com/vault-init-container:v6
           env:
             - name: VAULT_ADDR
               value: "https://vault-internal.rdevops6a.online:8200"
