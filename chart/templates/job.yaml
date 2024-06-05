@@ -15,7 +15,7 @@ spec:
             sizeLimit: 5Mi
       initContainers:
         - name: vault
-          image: 633788536644.dkr.ecr.us-east-1.amazonaws.com/vault-init-container:v6
+          image: 633788536644.dkr.ecr.us-east-1.amazonaws.com/vault-init-container:v5
           env:
             - name: VAULT_ADDR
               value: "https://vault-internal.rdevops6a.online:8200"
@@ -33,7 +33,7 @@ spec:
               name: vault
       containers:
       - name: schema-load
-        image: 633788536644.dkr.ecr.us-east-1.amazonaws.com/schema-init-container:v5
+        image: 633788536644.dkr.ecr.us-east-1.amazonaws.com/schema-init-container:v6
         env:
           - name: db_type
             value: {{ .Values.schema.db_type }}
