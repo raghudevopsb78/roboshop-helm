@@ -34,3 +34,5 @@ helm repo update
 
 helm install pstack prometheus-community/kube-prometheus-stack -f pstack-dev.yaml
 
+# grafana default username / password - admin / prom-operator
+
