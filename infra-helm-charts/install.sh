@@ -23,11 +23,7 @@ while true ; do
   if [ $? -eq 0 ]; then break ; fi
   sleep 5
 done
-## End
-echo
-echo
-echo
-echo "ArgoCD Password : $(argocd admin initial-password -n argocd | head -1)"
+
 
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
@@ -35,4 +31,17 @@ helm repo update
 helm install pstack prometheus-community/kube-prometheus-stack -f pstack-dev.yaml
 
 # grafana default username / password - admin / prom-operator
+
+kubectl create -f https://download.elastic.co/downloads/eck/2.13.0/crds.yaml
+kubectl apply -f https://download.elastic.co/downloads/eck/2.13.0/operator.yaml
+helm install elk elastic/eck-stack -n elastic-stack --create-namespace
+
+## End
+echo
+echo
+echo
+echo "ArgoCD Password : $(argocd admin initial-password -n argocd | head -1)"
+echo "Grafana Username / Password : admin  / prom-operator"
+echo "Elastic Username / Password : elastic  / $(kubectl get secrets -n elastic-stack elasticsearch-es-elastic-user -o json | jq '.data.elastic' | sed -e 's/"//g' | base64 --decode)"
+
 
