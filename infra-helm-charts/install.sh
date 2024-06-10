@@ -41,7 +41,7 @@ sed -e "s/ES_PASSWORD/${ES_PASSWORD}/" eck.yaml >/tmp/eck.yaml
 kubectl apply -f /tmp/eck.yaml
 
 helm repo add elastic https://helm.elastic.co
-helm install filebeat elastic/filebeat -f filebeat.yml
+helm upgrade -i filebeat elastic/filebeat -f filebeat.yml
 
 helm repo add autoscaler https://kubernetes.github.io/autoscaler
 helm upgrade -i node-autoscaler autoscaler/cluster-autoscaler --set 'autoDiscovery.clusterName'=dev-eks
