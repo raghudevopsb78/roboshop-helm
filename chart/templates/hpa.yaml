@@ -21,4 +21,4 @@ spec:
     name: {{ .Values.component }}
   behavior:
     scaleUp:
-      stabilizationWindowSeconds: 90
+      stabilizationWindowSeconds: 60
