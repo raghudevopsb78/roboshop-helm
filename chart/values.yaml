@@ -17,5 +17,7 @@ hpa:
 node:
   appType: general
 
+healthcheck:
+  enabled: true
 
 
